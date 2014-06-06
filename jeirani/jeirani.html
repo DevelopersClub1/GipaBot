@@ -1,0 +1,146 @@
+﻿<html>
+<head>
+<title>home</title><form name="time">
+<style type = "text/css" >
+@font-face
+{
+font-family:digiface;
+src:url("digiface.ttf")
+}
+body
+{
+background-image: url("jeirani.jpg");
+background-attachment: float;
+background-repeat: no-repeat;
+background-size:100%;
+}
+.satauri
+{
+font-size:30px;
+text-align:center;
+}
+.gilakebi
+{
+align:center;
+}
+#moigetuwaage
+{
+font-size:50px;
+font-color:red;
+}
+#tablo
+{
+font-family:digiface;
+
+color:ff0000;
+background-color:000000;
+text-align:center;
+font-color:red;
+font-size:50px;
+}
+</style>
+<input type="text" name="time2" size=15>
+</form>
+<script>
+function liveclock(){
+var curdate=new Date()
+var hours=curdate.getHours()
+var minutes=curdate.getMinutes()
+var seconds=curdate.getSeconds()
+var suffix="AM"
+if (hours>=12){
+suffix="PM"
+if (hours>=13)
+hours-=12
+}
+if (minutes<10)
+minutes="0"+minutes
+if (seconds<10)
+seconds="0"+seconds
+var thetime=hours+":"+minutes+":"+seconds+" "+suffix
+document.time.time2.value=thetime
+setTimeout("liveclock()",1000)
+}
+liveclock()
+</script>
+
+<hr>
+<p class="satauri" >მაშ ასე დავიწყოთ თამაში "ჯეირანი". </p>
+
+<script>
+var userq=0;
+var cpuq=0;
+function Moige()
+{
+document.getElementById("moigetuwaage").innerHTML=("მოიგე")
+userq+=1
+}
+function Waage()
+{
+document.getElementById("moigetuwaage").innerHTML=("წააგე")
+cpuq+=1
+}
+function Fre()
+{
+document.getElementById("moigetuwaage").innerHTML=("ფრეა")
+}
+function gaatamashe(xeli)
+{
+
+var romeli=Math.round(Math.random()*10)
+if (romeli<=3)
+{
+document.getElementById("demo").innerHTML='<img src="qva.jpg">'
+if (xeli==1) 
+{Fre();}
+else if (xeli==2) 
+{Waage();}
+else if (xeli==3) 
+{
+Moige();
+}
+}
+else if (romeli<=7)
+{
+document.getElementById("demo").innerHTML='<img src="makrateli.jpg">'
+if (xeli==1) 
+{Moige();}
+else if (xeli==2) 
+{Fre();}
+else if (xeli==3) 
+{Waage();}
+}
+else if (romeli<=10)
+{
+document.getElementById("demo").innerHTML='<img src="qagaldi.jpg">'
+if (xeli=="1") 
+{Waage();}
+else if (xeli=="2") 
+{Moige();}
+else if (xeli=="3") 
+{Fre();}
+}
+var tablosteqsti=userq+"-"+cpuq
+document.tablo.points.value=tablosteqsti
+}
+</script>
+</head>
+<body>
+<page align=center><br>
+<hr>
+<form name="tablo" >
+<input id="tablo" type="text"  name="points" size=3>
+</form>
+<div id="demo">
+
+</div>
+<div id="moigetuwaage">
+</div>
+<hr>
+<div id="gilakebi">
+<button onclick="gaatamashe('1'); return false;"><img src="qva.jpg"> </button>
+<button onclick="gaatamashe('2'); return false;"><img src="makrateli.jpg"> </button>
+<button onclick="gaatamashe('3'); return false;"><img src="qagaldi.jpg"> </button>
+</div>
+</body>
+</html>
